@@ -9,11 +9,11 @@ class Player {
         this.score.deaths = 0;
 
         if (side == 1) {
-            this.flag = "images/p1_1_7";
-            this.spawn = "images/p1_3_7";
+            this.flag = "assets/p1_1_7";
+            this.spawn = "assets/p1_3_7";
         } else {
-            this.flag = "images/p1_2_7";
-            this.spawn = "images/p1_4_7";
+            this.flag = "assets/p1_2_7";
+            this.spawn = "assets/p1_4_7";
         }
         this.hasFlag = false;
         this.flagStolen = false;
@@ -31,7 +31,7 @@ class Player {
 
         this.arrow = new mesh();
         this.arrowId = this.arrow.addRect(0, 0, 150, 150);
-        this.arrow.texture = "images/arrow";
+        this.arrow.texture = "assets/arrow";
         this.arrowTimer = 0;
 
         this.respawn();
@@ -136,10 +136,10 @@ class Player {
             for (var x = 0; x < world.maxW; x++) {
                 for (var y = 0; y < world.maxH; y++) {
                     block = world.map[x][y];
-                    if (block.pickup == "images/p1_1_7") {
+                    if (block.pickup == "assets/p1_1_7") {
                         block.pickup = null
                     }
-                    if (block.pickup == "images/p1_2_7") {
+                    if (block.pickup == "assets/p1_2_7") {
                         block.pickup = null
                     }
                 }
@@ -204,14 +204,14 @@ class Player {
                 this.returnFlag(tile);
             }
             // speedboost;
-            if (tile.pickup == "images/p1_1_6") {
+            if (tile.pickup == "assets/p1_1_6") {
                 sound("A Hero's Quest.FireBall Woosh");
                 this.hasSpeedboost = true;
                 this.boostTimer = 2;
                 this.resetPickup(tile);
             }
             // shield;
-            if (tile.pickup == "images/p1_2_6") {
+            if (tile.pickup == "assets/p1_2_6") {
                 sound("A Hero's Quest.Steal");
                 this.shield = this.shield + 50;
                 if (this.shield > 100) {
@@ -220,37 +220,37 @@ class Player {
                 this.resetPickup(tile);
             }
             // life;
-            if (tile.pickup == "images/p1_1_8") {
+            if (tile.pickup == "assets/p1_1_8") {
                 sound("A Hero's Quest.Eat 1");
                 this.life = 100;
                 this.resetPickup(tile);
             }
             // flak;
-            if (tile.pickup == "images/p1_2_8") {
+            if (tile.pickup == "assets/p1_2_8") {
                 sound("Game Sounds One.Reload 2");
                 this.setWeapon(Weapons.flak);
                 this.resetPickup(tile);
             }
             // minigun;
-            if (tile.pickup == "images/p1_3_8") {
+            if (tile.pickup == "assets/p1_3_8") {
                 sound("Game Sounds One.Reload 2");
                 this.setWeapon(Weapons.minigun);
                 this.resetPickup(tile);
             }
             // blastgun;
-            if (tile.pickup == "images/p1_4_8") {
+            if (tile.pickup == "assets/p1_4_8") {
                 sound("Game Sounds One.Reload 2");
                 this.setWeapon(Weapons.blastgun);
                 this.resetPickup(tile);
             }
             // railgun;
-            if (tile.pickup == "images/p1_5_8") {
+            if (tile.pickup == "assets/p1_5_8") {
                 sound("Game Sounds One.Reload 2");
                 this.setWeapon(Weapons.railgun);
                 this.resetPickup(tile);
             }
             // rocketlauncher;
-            if (tile.pickup == "images/p1_6_8") {
+            if (tile.pickup == "assets/p1_6_8") {
                 sound("Game Sounds One.Reload 2");
                 this.setWeapon(Weapons.rocketlauncher);
                 this.resetPickup(tile);
@@ -442,7 +442,7 @@ class Player {
             pushMatrix();
             translate(p1offset.x, p1offset.y);
             tint(255, 255, 255, 131);
-            sprite("images/shield", 0, 0, world.size);
+            sprite("assets/shield", 0, 0, world.size);
             popMatrix();
         }
         */
@@ -459,12 +459,12 @@ class Player {
         // draws light flash || player shadow;
         if (this.showFlash) {
             if (this.weapon == Weapons.blastgun) {
-                sprite("images/blast2", 0, 0, 250, 250);
+                sprite("assets/blast2", 0, 0, 250, 250);
             } else {
-                sprite("images/bullet", 0, 0, 250, 250);
+                sprite("assets/bullet", 0, 0, 250, 250);
             }
         } else {
-            sprite("images/Shadow", 0, 0, 80, 96);
+            sprite("assets/Shadow", 0, 0, 80, 96);
         }
 
         // draws the player;
@@ -476,7 +476,7 @@ class Player {
                 } else {
                     tint(255, 255, 255, 250);
                 }
-                sprite("images/muzzle", 73, -9);
+                sprite("assets/muzzle", 73, -9);
             }
             if (Math.floor(this.invinTimer * 5) % 2 == 0) {
                 this.model.draw();
@@ -499,7 +499,7 @@ class Player {
                 } else {
                     tint(255, 255, 255, 250);
                 }
-                sprite("images/muzzle", 73, -9);
+                sprite("assets/muzzle", 73, -9);
             }
             this.model.draw();
         }

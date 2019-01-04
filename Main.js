@@ -23,7 +23,7 @@ function setup() {
     stroke(0, 0, 0, 255);
 
 
-    assetList("Dropbox", TEXT);
+    assetList("assets", TEXT);
 
     touches = {}
     nbTouches = 0;
@@ -39,7 +39,7 @@ function setup() {
 
 function draw() {
     background(240, 240, 240, 255);
-    sprite("images/bg", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
+    sprite("assets/bg", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
 
     if (showEditor && editor.editMode) {
         editor.draw();
@@ -57,7 +57,7 @@ function draw() {
         }
 
         if (showEditor) {
-            editor.playButton.img = "images/edit";
+            editor.playButton.img = "assets/edit";
             editor.playButton.draw();
         }
 

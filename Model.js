@@ -18,9 +18,9 @@ class Model {
         this.mdl = new mesh();
         this.id = this.mdl.addRect(0, 0, 160 / 3, 105, -Math.PI / 2);
         if (this.owner.side == 1) {
-            this.mdl.texture = "images/Toon";
+            this.mdl.texture = "assets/Toon";
         } else {
-            this.mdl.texture = "images/Toon2";
+            this.mdl.texture = "assets/Toon2";
         }
         var frame = this.frames["idle"][this.currentFrame];
         this.mdl.setRectTex(this.id, frame[1], 0, frame[2], 1);

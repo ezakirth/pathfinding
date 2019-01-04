@@ -2,7 +2,7 @@ class Animation {
 
     constructor(effect, pos, loop, speed, size, alpha) {
         this.pos = new vec2(pos.x, pos.y);
-        this.img = "images/" + effect;
+        this.img = "assets/" + effect;
         this.timer = 0;
         this.loop = loop;
         this.speed = speed || .1;

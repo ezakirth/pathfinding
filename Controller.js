@@ -38,8 +38,8 @@ class Controller {
 
             this.lastDir = dir;
 
-            sprite("images/stick", this.pos.x, this.pos.y);
-            sprite("images/stick_bg", this.origin.x, this.origin.y);
+            sprite("assets/stick", this.pos.x, this.pos.y);
+            sprite("assets/stick_bg", this.origin.x, this.origin.y);
         }
     }
 

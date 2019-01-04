@@ -11,14 +11,14 @@ class Button {
     draw() {
         var bg = "";
         if (editor.activeButton == this.type) {
-            bg = "images/buttonbg_on";
+            bg = "assets/buttonbg_on";
         } else {
-            bg = "images/buttonbg_off";
+            bg = "assets/buttonbg_off";
         }
         if (this.type != "play" && this.type != "save" && this.type != "load") {
             sprite(bg, this.x, this.y, 71, 71);
             sprite(this.img, this.x, this.y, this.size - 10, this.size - 10);
-            sprite("images/overlay", this.x, this.y, 71, 71);
+            sprite("assets/overlay", this.x, this.y, 71, 71);
         } else {
             sprite(this.img, this.x, this.y, this.size, this.size);
             if (this.type == "save" && !editor.saved) {
@@ -81,10 +81,10 @@ class Button {
 
             if (this.type == "grid") {
                 editor.showGrid = !editor.showGrid;
-                if (this.img == "images/showgrid_on") {
-                    this.img = "images/showgrid_off";
+                if (this.img == "assets/showgrid_on") {
+                    this.img = "assets/showgrid_off";
                 } else {
-                    this.img = "images/showgrid_on";
+                    this.img = "assets/showgrid_on";
                 }
             }
 

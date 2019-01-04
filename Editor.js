@@ -16,18 +16,18 @@ class Editor {
         this.saveSlot = 1;
 
         // setup buttons;
-        table.insert(this.buttons, new Button("images/load", 50 * (this.buttons.length + 1), HEIGHT - 50, "load"));
-        table.insert(this.buttons, new Button("images/save", 60 * (this.buttons.length + 1), HEIGHT - 50, "save"));
-        table.insert(this.buttons, new Button("images/move", 74 * (this.buttons.length + 1), HEIGHT - 50, "move"));
-        this.tileButton = new Button("images/tiles_1", 74 * (this.buttons.length + 1), HEIGHT - 50, "tile");
+        table.insert(this.buttons, new Button("assets/load", 50 * (this.buttons.length + 1), HEIGHT - 50, "load"));
+        table.insert(this.buttons, new Button("assets/save", 60 * (this.buttons.length + 1), HEIGHT - 50, "save"));
+        table.insert(this.buttons, new Button("assets/move", 74 * (this.buttons.length + 1), HEIGHT - 50, "move"));
+        this.tileButton = new Button("assets/tiles_1", 74 * (this.buttons.length + 1), HEIGHT - 50, "tile");
         table.insert(this.buttons, this.tileButton);
-        this.decalButton = new Button("images/decals", 74 * (this.buttons.length + 1), HEIGHT - 50, "decal");
+        this.decalButton = new Button("assets/decals", 74 * (this.buttons.length + 1), HEIGHT - 50, "decal");
         table.insert(this.buttons, this.decalButton);
-        table.insert(this.buttons, new Button("images/showgrid_on", 74 * (this.buttons.length + 1), HEIGHT - 50, "grid"));
-        this.pickupButton = new Button("images/pickups", 74 * (this.buttons.length + 1), HEIGHT - 50, "pickup");
+        table.insert(this.buttons, new Button("assets/showgrid_on", 74 * (this.buttons.length + 1), HEIGHT - 50, "grid"));
+        this.pickupButton = new Button("assets/pickups", 74 * (this.buttons.length + 1), HEIGHT - 50, "pickup");
         table.insert(this.buttons, this.pickupButton);
-        table.insert(this.buttons, new Button("images/portal", 74 * (this.buttons.length + 1), HEIGHT - 50, "portal"));
-        this.playButton = new Button("images/play", WIDTH - 50, HEIGHT - 50, "play");
+        table.insert(this.buttons, new Button("assets/portal", 74 * (this.buttons.length + 1), HEIGHT - 50, "portal"));
+        this.playButton = new Button("assets/play", WIDTH - 50, HEIGHT - 50, "play");
         table.insert(this.buttons, this.playButton);
 
         // portal specific;
@@ -155,7 +155,7 @@ class Editor {
         text(txt, 128, HEIGHT / 2);
 
         rectMode(CORNER);
-        sprite("images/tiles_1", WIDTH / 2, HEIGHT / 2, 512, 512);
+        sprite("assets/tiles_1", WIDTH / 2, HEIGHT / 2, 512, 512);
     }
 
     // draws pickups tileset;
@@ -165,11 +165,11 @@ class Editor {
 
         stroke(127, 127, 127, 255);
         fill(0, 0, 0, 160);
-        sprite("images/erase", 128, HEIGHT / 2, 128, 128);
+        sprite("assets/erase", 128, HEIGHT / 2, 128, 128);
 
         rect(WIDTH / 2, HEIGHT / 2, 518, 518);
         rectMode(CORNER);
-        sprite("images/pickups", WIDTH / 2, HEIGHT / 2, 512, 512);
+        sprite("assets/pickups", WIDTH / 2, HEIGHT / 2, 512, 512);
     }
 
     // draws decals tileset;
@@ -179,11 +179,11 @@ class Editor {
 
         stroke(127, 127, 127, 255);
         fill(127, 127, 127, 160);
-        sprite("images/erase", 128, HEIGHT / 2, 128, 128);
+        sprite("assets/erase", 128, HEIGHT / 2, 128, 128);
 
         rect(WIDTH / 2, HEIGHT / 2, 518, 518);
         rectMode(CORNER);
-        sprite("images/decals", WIDTH / 2, HEIGHT / 2, 512, 512);
+        sprite("assets/decals", WIDTH / 2, HEIGHT / 2, 512, 512);
     }
 
     // draws the Load menu;
@@ -195,7 +195,7 @@ class Editor {
 
         rect(WIDTH / 2, HEIGHT / 2, 512, 512);
         rectMode(CORNER);
-        sprite("images/loadmenu", WIDTH / 2, HEIGHT / 2, 512, 512);
+        sprite("assets/loadmenu", WIDTH / 2, HEIGHT / 2, 512, 512);
 
         var L = WIDTH / 2 - 208;
         var W = 400;
@@ -228,7 +228,7 @@ class Editor {
 
         rect(WIDTH / 2, HEIGHT / 2, 512, 512);
         rectMode(CORNER);
-        sprite("images/loadmenu", WIDTH / 2, HEIGHT / 2, 512, 512);
+        sprite("assets/loadmenu", WIDTH / 2, HEIGHT / 2, 512, 512);
 
         var L = WIDTH / 2 - 208;
         var W = 400;
@@ -281,9 +281,9 @@ class Editor {
         }
 
 
-        this.tileButton.img = this.tile.tex || "images/tiles_1";
-        this.pickupButton.img = this.tile.pickup || "images/pickups";
-        this.playButton.img = "images/play";
+        this.tileButton.img = this.tile.tex || "assets/tiles_1";
+        this.pickupButton.img = this.tile.pickup || "assets/pickups";
+        this.playButton.img = "assets/play";
 
         for (var button of this.buttons) {
             button.draw();
@@ -309,7 +309,7 @@ class Editor {
             var x = Math.floor((touch.x - WIDTH / 2 + 512 / 2) / 512 * nb) + 1;
             var y = Math.floor((touch.y - HEIGHT / 2 + 512 / 2) / 512 * nb) + 1;
 
-            var tile = "images/" + txt + "_" + x + "_" + y;
+            var tile = "assets/" + txt + "_" + x + "_" + y;
             if (readImage(tile)) {
                 this.tile.tex = tile;
                 this.showTiles = false;
@@ -332,12 +332,12 @@ class Editor {
             var x = Math.floor((touch.x - WIDTH / 2 + 512 / 2) / 512 * nb) + 1;
             var y = Math.floor((touch.y - HEIGHT / 2 + 512 / 2) / 512 * nb) + 1;
 
-            var tile = "images/" + txt + "_" + x + "_" + y;
+            var tile = "assets/" + txt + "_" + x + "_" + y;
             if (readImage(tile)) {
                 this.tile.pickup = tile;
             } else {
                 if (touch.x > 64 && touch.x < 192 && touch.y > HEIGHT / 2 - 64 && touch.y < HEIGHT / 2 + 64) {
-                    this.tile.pickup = "images/erase";
+                    this.tile.pickup = "assets/erase";
                 }
                 this.showPickups = false;
             }
@@ -353,12 +353,12 @@ class Editor {
             var x = Math.floor((touch.x - WIDTH / 2 + 512 / 2) / 512 * nb) + 1;
             var y = Math.floor((touch.y - HEIGHT / 2 + 512 / 2) / 512 * nb) + 1;
 
-            var tile = "images/" + txt + "_" + x + "_" + y;
+            var tile = "assets/" + txt + "_" + x + "_" + y;
             if (readImage(tile)) {
                 this.tile.decal = tile;
             } else {
                 if (touch.x > 64 && touch.x < 192 && touch.y > HEIGHT / 2 - 64 && touch.y < HEIGHT / 2 + 64) {
-                    this.tile.decal = "images/erase";
+                    this.tile.decal = "assets/erase";
                 }
                 this.showDecals = false;
             }
@@ -523,22 +523,22 @@ class Editor {
                     if (tile.portal) {
                         this.removePortal(tile);
                     }
-                    if (this.tile.pickup == "images/erase") {
+                    if (this.tile.pickup == "assets/erase") {
                         tile.pickup = null;
                     } else {
                         tile.solid = false;
                         tile.pickup = this.tile.pickup;
                     }
-                    if (tile.pickup == "images/p1_1_7") {
+                    if (tile.pickup == "assets/p1_1_7") {
                         world.p1flag = new vec2(x + ix, y + iy);
                     }
-                    if (tile.pickup == "images/p1_2_7") {
+                    if (tile.pickup == "assets/p1_2_7") {
                         world.p2flag = new vec2(x + ix, y + iy);
                     }
-                    if (tile.pickup == "images/p1_3_7") {
+                    if (tile.pickup == "assets/p1_3_7") {
                         world.p1spawn = new vec2(x + ix, y + iy);
                     }
-                    if (tile.pickup == "images/p1_4_7") {
+                    if (tile.pickup == "assets/p1_4_7") {
                         world.p2spawn = new vec2(x + ix, y + iy);
                     }
 
@@ -547,7 +547,7 @@ class Editor {
 
                 // add decals;
                 if (this.tile.decal) {
-                    if (this.tile.decal == "images/erase") {
+                    if (this.tile.decal == "assets/erase") {
                         tile.decals = null;
                     } else {
                         tile.solid = false;

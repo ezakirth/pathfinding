@@ -26,7 +26,7 @@ class World {
     }
 
     load() {
-        var slot = "images/save_" + editor.saveSlot;
+        var slot = "assets/save_" + editor.saveSlot;
         var backup = readText(slot);
         this.timers = Array();
 
@@ -70,16 +70,16 @@ class World {
                 //          block.decals = {block.decal}
                 //       }
 
-                if (block.pickup == "images/p1_1_7") {
+                if (block.pickup == "assets/p1_1_7") {
                     this.p1flag = new vec2(x, y)
                 }
-                if (block.pickup == "images/p1_2_7") {
+                if (block.pickup == "assets/p1_2_7") {
                     this.p2flag = new vec2(x, y)
                 }
-                if (block.pickup == "images/p1_3_7") {
+                if (block.pickup == "assets/p1_3_7") {
                     this.p1spawn = new vec2(x, y)
                 }
-                if (block.pickup == "images/p1_4_7") {
+                if (block.pickup == "assets/p1_4_7") {
                     this.p2spawn = new vec2(x, y)
                 }
 
@@ -89,7 +89,7 @@ class World {
     }
 
     save() {
-        var slot = "images/save_" + editor.saveSlot;
+        var slot = "assets/save_" + editor.saveSlot;
         saveText(slot, json.encode(this.map));
         editor.saved = true;
     }
@@ -152,11 +152,11 @@ class World {
                         if (block.portal.dx) {
                             tint(block.portal.r, block.portal.g, block.portal.b, 140);
                         }
-                        sprite("images/portal", px, py, this.size);
+                        sprite("assets/portal", px, py, this.size);
                         tint(255);
                     }
                     if (block.pickup) {
-                        sprite("images/light", px, py, this.size);
+                        sprite("assets/light", px, py, this.size);
                         sprite(block.pickup, px, py, this.size);
                     }
                     if (editor.showGrid) {
@@ -234,12 +234,12 @@ class World {
                         pushMatrix();
                         translate(px, py);
                         rotate(ElapsedTime * 300);
-                        sprite("images/portal", 0, 0, bigslowmorph);
+                        sprite("assets/portal", 0, 0, bigslowmorph);
                         popMatrix();
                         tint(255);
                     }
                     if (block.pickup) {
-                        sprite("images/light", px, py, bigfastmorph);
+                        sprite("assets/light", px, py, bigfastmorph);
                         sprite(block.pickup, px, py, smallslowmorph);
                     }
                 }

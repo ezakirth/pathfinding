@@ -183,20 +183,20 @@ class Bullet {
         if (this.impact) {
             if (this.weapon == Weapons.blastgun) {
                 tint(255, 255, 255, 255);
-                sprite("images/blast2", 0, 0, 128, 128);
+                sprite("assets/blast2", 0, 0, 128, 128);
             } else {
                 tint(255, 240, 0, 255);
-                sprite("images/bullet", 0, 0, 128, 128);
+                sprite("assets/bullet", 0, 0, 128, 128);
             }
         } else {
             tint(255, 255, 255, 255);
             if (this.weapon == Weapons.blastgun) {
-                sprite("images/blast", 0, 0, 64, 64);
+                sprite("assets/blast", 0, 0, 64, 64);
             } else {
                 if (this.weapon == Weapons.rocketlauncher) {
-                    sprite("images/bullet", 0, 0, 96, 96);
+                    sprite("assets/bullet", 0, 0, 96, 96);
                 } else {
-                    sprite("images/bullet", 0, 0, 64, 64);
+                    sprite("assets/bullet", 0, 0, 64, 64);
                 }
             }
             popMatrix();

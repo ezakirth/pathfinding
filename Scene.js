@@ -107,15 +107,15 @@ draw() {
 
         //  vignette overlay && separation;
         rotate(-90);
-        sprite("images/0001", -HEIGHT / 2, WIDTH / 4, HEIGHT, WIDTH / 2);
+        sprite("assets/0001", -HEIGHT / 2, WIDTH / 4, HEIGHT, WIDTH / 2);
         rotate(180);
-        sprite("images/0001", HEIGHT / 2, -WIDTH / 2 - WIDTH / 4, HEIGHT, WIDTH / 2);
+        sprite("assets/0001", HEIGHT / 2, -WIDTH / 2 - WIDTH / 4, HEIGHT, WIDTH / 2);
         rotate(-90);
         strokeWidth(2);
         stroke(0, 0, 0, 255);
         line(WIDTH / 2, 1, WIDTH / 2, HEIGHT);
     } else {
-        sprite("images/0001", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
+        sprite("assets/0001", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
     }
 }
 
