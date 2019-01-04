@@ -9,22 +9,27 @@ function init() {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
+
+    $.ajaxSetup({
+        async: false
+    });
+
     canvas.addEventListener("mousedown", function(e) {
         mouseActive = true;
-        touched({state : BEGAN, x : e.clientX, y : HEIGHT - e.clientY });
+        touched({state : BEGAN, x : e.clientX, y :  HEIGHT - e.clientY });
     });
     
     canvas.addEventListener("mouseup", function(e) {
         mouseActive = false;
-        touched({state : ENDED, x : e.clientX, y : HEIGHT - e.clientY });
+        touched({state : ENDED, x : e.clientX, y :  HEIGHT - e.clientY });
     });
 
     canvas.addEventListener("mousemove", function(e) {
-        if (mouseActive) touched({state : MOVING, x : e.clientX, y : HEIGHT - e.clientY });
+        if (mouseActive) touched({state : MOVING, x : e.clientX, y :  HEIGHT - e.clientY });
     });
 
     // invert y-axis
-    ctx.transform(1, 0, 0, -1, 0, canvas.height)
+//    ctx.transform(1, 0, 0, -1, 0, canvas.height)
     setup();
 }
 
@@ -43,7 +48,7 @@ function sprite(img, x, y, w, h) {
 
     if (!image)
     {
-        cachedImages[img] = new Image(60, 60);
+        cachedImages[img] = new Image(256, 256);
         image = cachedImages[img];
         image.src = img + '.png';
         image.onload = function() {
@@ -51,16 +56,20 @@ function sprite(img, x, y, w, h) {
             let height = h || this.naturalHeight;
     
             if (w && !h) height = w;
+//            ctx.drawImage(this, x-width/2, HEIGHT - (y-height/2), width, height);        
             ctx.drawImage(this, x-width/2, y-height/2, width, height);        
         }
     }
     else
-    {
+    {   
         let width = w || image.naturalWidth;
         let height = h || image.naturalHeight;
 
         if (w && !h) height = w;
-        ctx.drawImage(image, x-width/2, y-height/2, width, height);        
+//        if (img.startsWith("assets/t1") || img.startsWith("assets/d1") )
+ //           ctx.drawImage(image, x-width/2, HEIGHT - (y-height/2), width, height);
+  //      else
+            ctx.drawImage(image, x-width/2, y-height/2, width, height);        
     }
 };
 
@@ -91,6 +100,9 @@ table = {};
 table.insert = function (arr, value) {
     arr.push(value);
 };
+table.remove = function (arr, value) {
+    
+}
 
 
 function noSmooth() {};
@@ -113,8 +125,18 @@ function textWrapWidth() {};
 function textAlign() {};
 function readImage() {};
 
-function readText() {};
-function saveText() {};
+function readText(url) {
+    var data;
+    $.getJSON(url + '.txt', function(json) {
+        data = json;
+    });
+    return data;
+};
+function saveText(url) {
+    $.getJSON(url + '.json', function(json) {
+        console.log(json); // this will show the info it in firebug console
+    });
+};
 
 function vec2(x, y) {
     this.x = x || 0;

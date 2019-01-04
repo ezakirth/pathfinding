@@ -39,7 +39,7 @@ class World {
         this.y = 1;
 
         if (backup) {
-            this.map = JSON.parse(backup);
+            this.map = backup;//JSON.parse(backup);
             this.maxW = this.map.length;
             this.maxH = this.map[1].length;
         } else {
@@ -82,7 +82,7 @@ class World {
                 if (block.pickup == "assets/p1_4_7") {
                     this.p2spawn = new vec2(x, y)
                 }
-
+                
 
             }
         };

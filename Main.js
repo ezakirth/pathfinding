@@ -25,7 +25,7 @@ function setup() {
 
     assetList("assets", TEXT);
 
-    touches = {}
+    touches = [];
     nbTouches = 0;
 
     if (!showEditor) {
@@ -39,7 +39,7 @@ function setup() {
 
 function draw() {
     background(240, 240, 240, 255);
-    //sprite("assets/bg", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
+    sprite("assets/bg", WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
 
     if (showEditor && editor.editMode) {
         editor.draw();
