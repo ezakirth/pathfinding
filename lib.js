@@ -1,3 +1,92 @@
+var ctx;
+var canvas;
+var cachedImages = {};
+
+var mouseActive = false;;
+
+
+function init() {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+
+    canvas.addEventListener("mousedown", function(e) {
+        mouseActive = true;
+        touched({state : BEGAN, x : e.clientX, y : HEIGHT - e.clientY });
+    });
+    
+    canvas.addEventListener("mouseup", function(e) {
+        mouseActive = false;
+        touched({state : ENDED, x : e.clientX, y : HEIGHT - e.clientY });
+    });
+
+    canvas.addEventListener("mousemove", function(e) {
+        if (mouseActive) touched({state : MOVING, x : e.clientX, y : HEIGHT - e.clientY });
+    });
+
+    // invert y-axis
+    ctx.transform(1, 0, 0, -1, 0, canvas.height)
+    setup();
+}
+
+
+
+
+
+
+
+function background() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
+
+function sprite(img, x, y, w, h) {
+    let image = cachedImages[img];
+
+    if (!image)
+    {
+        cachedImages[img] = new Image(60, 60);
+        image = cachedImages[img];
+        image.src = img + '.png';
+        image.onload = function() {
+            let width = w || this.naturalWidth;
+            let height = h || this.naturalHeight;
+    
+            if (w && !h) height = w;
+            ctx.drawImage(this, x-width/2, y-height/2, width, height);        
+        }
+    }
+    else
+    {
+        let width = w || image.naturalWidth;
+        let height = h || image.naturalHeight;
+
+        if (w && !h) height = w;
+        ctx.drawImage(image, x-width/2, y-height/2, width, height);        
+    }
+};
+
+function pushMatrix() {};
+
+function popMatrix() {};
+function resetMatrix() {};
+
+function translate() {};
+
+function rect() {};
+function rectMode() {};
+
+function fontSize() {};
+
+function text() {};
+
+function image() {};
+
+function rotate() {};
+
+function tint() {};
+
+
+
+
 table = {};
 table.insert = function (arr, value) {
     arr.push(value);
@@ -20,8 +109,12 @@ function assetList() {};
 function supportedOrientations() {};
 
 function displayMode() {};
+function textWrapWidth() {};
+function textAlign() {};
+function readImage() {};
 
 function readText() {};
+function saveText() {};
 
 function vec2(x, y) {
     this.x = x || 0;
@@ -58,31 +151,9 @@ vec2.prototype.normalize = function () {
     return new vec2(this.x / (Math.sqrt(this.x * this.x + this.y * this.y)), this.y / (Math.sqrt(this.x * this.x + this.y * this.y)));
 }
 
-function background() {};
-
-function sprite() {};
-
 function sound() {};
 
-function pushMatrix() {};
-
-function popMatrix() {};
-
-function translate() {};
-
-function rect() {};
-
-function fontSize() {};
-
-function text() {};
-
-function image() {};
-
 function music() {};
-
-function rotate() {};
-
-function tint() {};
 
 function mesh() {};
 mesh.prototype.addRect = function () {};
@@ -102,3 +173,7 @@ var HEIGHT = 768;
 var WIDTH = 1024;
 var ENDED = 'ENDED';
 var BEGAN = 'BEGAN';
+var MOVING = 'MOVING';
+var CENTER = 'CENTER';
+var CORNER = 'CORNER';
+

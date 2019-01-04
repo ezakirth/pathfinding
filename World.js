@@ -39,7 +39,7 @@ class World {
         this.y = 1;
 
         if (backup) {
-            this.map = json.decode(backup);
+            this.map = JSON.parse(backup);
             this.maxW = this.map.length;
             this.maxH = this.map[1].length;
         } else {
@@ -90,7 +90,7 @@ class World {
 
     save() {
         var slot = "assets/save_" + editor.saveSlot;
-        saveText(slot, json.encode(this.map));
+        saveText(slot, JSON.stringify(this.map));
         editor.saved = true;
     }
 
@@ -195,7 +195,6 @@ class World {
         var fy = fy * this.size;
         var px = 0;
         var py = 0;
-
         pushMatrix();
         var w = 3;
         if (scene.multi) {
@@ -217,7 +216,6 @@ class World {
             for (var y = iy - 5; y < iy + 5; y++) {
                 if (x <= this.maxW && y <= this.maxH && x > 0 && y > 0) {
                     block = this.map[x][y];
-
                     // read && display tile content;
                     if (block.tex) {
                         sprite(block.tex, px, py, this.size);
